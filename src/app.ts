@@ -1,6 +1,6 @@
 import { RTMClient } from '@slack/rtm-api';
 import { WebClient } from '@slack/web-api';
-import Hotcook from './hotcook/hotcook';
+import { Hotcook } from '@mecab/hotcook';
 
 const token = process.env.SLACK_TOKEN;
 
@@ -164,8 +164,6 @@ async function onMessage(e: any): Promise<void> {
 (async (): Promise<void> => {
     await rtm.start();
     console.log(`connected. id: ${rtm.activeUserId}`);
-
-    const hotcook = new Hotcook();
 
     rtm.on('message', async (e) => {
         try {
